@@ -10,7 +10,6 @@
   - Selles : 8
   - Toux : 0
   - etc
-- Budget
 - Date de naissance
 
 ## Résultats
@@ -18,7 +17,7 @@
   <br>Ex :
   - Fatigue
   - Grippe
-- Médicaments traitant les symptômes par rapport au budget (les - chers)
+- Médicaments traitant les symptômes (les - chers)
   - Doliprane : 4000 Ar
   - Fervex : 2000 Ar
 - Etat de santé à la fin
@@ -46,7 +45,7 @@
 
 ### Etape sup : Possible aléa
 - Contre-indication :
-- Efficace avec des paramètres mais provoquent des effets secondaires : 
+- Efficace sur certains paramètres mais provoquent des effets secondaires : 
   <br> Ex : 
   - Un doliprane a une action de 3 contre les maux de tête et une action de -2 avec les selles et -1 avec morves
 - On donne les médicaments des maladies venant des effets secondaires : soigner les contres indications
