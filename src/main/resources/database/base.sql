@@ -21,7 +21,7 @@ create table patient_symptomes(
 create table parametres(
     id serial primary key,
     id_symptome int references symptomes(id),
-    plage_intensite int4,
+    plage_intensite int4range,
     EXCLUDE USING gist (plage_intensite WITH &&, id_symptome WITH =)
 );
 
