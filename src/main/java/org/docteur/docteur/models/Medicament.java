@@ -25,6 +25,7 @@ public class Medicament {
     @Column(name = "prix_unitaire")
     private Double prixUnitaire;
 
-    @OneToMany(mappedBy = "medicament")
+    @OneToMany(mappedBy = "medicament", fetch = FetchType.EAGER)
+    @OrderBy("symptome.id")
     private List<MedicamentSymptome> medicamentSymptomes;
 }

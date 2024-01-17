@@ -36,6 +36,8 @@
   - Fatigue
   - Grippe
 
+## OK !
+
 ### 2ème étape : Deviner les médicaments
 - ActionMedicamentParamètre :
   - 1 médicament peut + ou - (0 à 10) guérir un paramètre

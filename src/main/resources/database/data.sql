@@ -84,6 +84,10 @@ from v_maladies_patient
 where date_consultation = '2024-01-17 06:08:32'
 and id_patient = 1;
 
+select *
+from patient_symptomes
+where date_consultation = '2024-01-17 06:08:32'
+  and id_patient = 1;
 
 
 
