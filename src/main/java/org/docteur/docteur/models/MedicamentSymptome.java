@@ -1,5 +1,6 @@
 package org.docteur.docteur.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 

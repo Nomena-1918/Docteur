@@ -25,7 +25,6 @@ public class Medicament {
     @Column(name = "prix_unitaire")
     private Double prixUnitaire;
 
-    @OneToMany(mappedBy = "medicament", fetch = FetchType.EAGER)
-    @OrderBy("symptome.id")
+    @Transient
     private List<MedicamentSymptome> medicamentSymptomes;
 }

@@ -1,7 +1,7 @@
 -- Insertion des symptômes
 insert into symptomes(nom) values
-('Toux'),
 ('Fièvre'),
+('Toux'),
 ('Morves'),
 ('Maux de tête'),
 ('Maux de ventre'),
@@ -105,10 +105,10 @@ insert into medicament_symptomes(id_medicament, id_symptome, effet) values
 (2, 1, 6),
 (2, 2, 2),
 (2, 3, 2),
-(2, 4,10), -- effets Maux de ventre et Selles = 0
+(2, 4,10),
 (2, 5, 0),
 (2, 6, 0),
-(2, 7, 2),
+(2, 7, 0),
 
 
 (3, 1, 9),
