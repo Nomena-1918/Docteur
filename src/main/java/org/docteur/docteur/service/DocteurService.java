@@ -15,10 +15,14 @@ public class DocteurService {
     private final MaladieRepository maladieRepository;
 
     @Autowired
-    public DocteurService(MedicamentRepository medicamentRepository) {
+    public DocteurService(MedicamentRepository medicamentRepository, MaladieRepository maladieRepository) {
         this.medicamentRepository = medicamentRepository;
+        this.maladieRepository = maladieRepository;
     }
 
+    public List<Maladie> getMaladiesPatient(Patient patient, LocalDateTime localDateTime) {
+        
+    }
 
     /*
     public Medicament getMedicamentSoignant(Patient patient, LocalDateTime localDateTime) {
