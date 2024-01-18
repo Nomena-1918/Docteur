@@ -1,9 +1,12 @@
 package org.docteur.docteur;
 
 import org.docteur.docteur.models.Maladie;
+import org.docteur.docteur.models.Patient;
 import org.docteur.docteur.models.PatientSymptome;
+import org.docteur.docteur.models.data.Diagnostique;
 import org.docteur.docteur.models.data.MedicamentQuantite;
 import org.docteur.docteur.repositories.MaladieRepository;
+import org.docteur.docteur.repositories.PatientRepository;
 import org.docteur.docteur.repositories.PatientSymptomeRepository;
 import org.docteur.docteur.service.DocteurService;
 import org.junit.jupiter.api.Test;
@@ -21,16 +24,18 @@ class DocteurApplicationTests {
     private final MaladieRepository maladieRepository;
     private final PatientSymptomeRepository patientSymptomeRepository;
     private final DocteurService docteurService;
+    private final PatientRepository patientRepository;
 
     @Value("${custom.excel.file.location}")
     private final String excelFileLocation = "src/main/resources/file/liste-patient-symptome.xlsx";
     private final LocalDateTime dateConsultation = LocalDateTime.parse("2024-01-17T06:08:32");
 
     @Autowired
-    DocteurApplicationTests(MaladieRepository maladieRepository, PatientSymptomeRepository patientSymptomeRepository, DocteurService docteurService) {
+    DocteurApplicationTests(MaladieRepository maladieRepository, PatientSymptomeRepository patientSymptomeRepository, DocteurService docteurService, PatientRepository patientRepository) {
         this.maladieRepository = maladieRepository;
         this.patientSymptomeRepository = patientSymptomeRepository;
         this.docteurService = docteurService;
+        this.patientRepository = patientRepository;
     }
 
     @Test
@@ -71,6 +76,16 @@ class DocteurApplicationTests {
         MedicamentQuantite medicamentQuantite = docteurService.getMedicamentSoignant(1L, dateConsultation);
         System.out.println(medicamentQuantite);
     }
+
+    @Test
+    void testDiagnostique() {
+        var p = patientRepository.findById(1L);
+        Diagnostique diagnostique = null;
+        if (p.isPresent())
+            diagnostique = docteurService.getDiagnostique(p.get(), dateConsultation);
+        System.out.println(diagnostique);
+    }
+
 
     @Test
     void testDeletePatientSymptomeFromExcelAfter() throws Exception {

@@ -62,10 +62,11 @@ public class DocteurController {
         patientSymptomeRepository.saveAll(patientDentList);
 
         // Diagnostique
-        assert patientRepository.findById(idPatient).isPresent();
-        Patient patient = patientRepository.findById(idPatient).get();
+        var p = patientRepository.findById(idPatient);
+        Diagnostique diagnostique = null;
+        if (p.isPresent())
+            diagnostique = docteurService.getDiagnostique(p.get(), dateConsultation);
 
-        Diagnostique diagnostique = docteurService.getDiagnostique(patient, dateConsultation);
         model.addAttribute("diagnostique", diagnostique);
 
         return "pages/diagnostique";
