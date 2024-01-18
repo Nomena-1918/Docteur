@@ -35,14 +35,14 @@
                 <tbody>
                 <tr th:each="item : ${diagnostique?.getMaladieList()}">
                     <td th:text="${item?.getId()}"></td>
-                    <td th:text="${item.getNom()}"></td>
+                    <td th:text="${item?.getNom()}"></td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
 
-
+<!--
 
     <div class="offset-2 m-3">
     <h2 class="h3 py-3">3) Liste des médicaments : </h2>
@@ -59,9 +59,9 @@
             </thead>
             <tbody>
             <tr th:each="item : ${diagnostique?.getMedicamentQuantiteList()}">
-                <td th:text="${item?.getMedicament().getId()}"></td>
-                <td th:text="${item?.getMedicament().getNom()}"></td>
-                <td th:text="${item?.getMedicament().getPrixUnitaire()}"></td>
+                <td th:text="${item?.getMedicament()?.getId()}"></td>
+                <td th:text="${item?.getMedicament()?.getNom()}"></td>
+                <td th:text="${item?.getMedicament()?.getPrixUnitaire()}"></td>
                 <td th:text="${item?.getQuantite()}"></td>
                 <td th:text="${item?.getPrixTotal()}"></td>
             </tr>
@@ -79,9 +79,8 @@
         </table>
         </div>
     </div>
-
+-->
 
 </div>
-<!-- -->
 </body>
 </html>

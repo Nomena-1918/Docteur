@@ -58,8 +58,8 @@ public class DocteurController {
         LocalDateTime dateConsultation = formConsultation.getDateConsultationT();
         Long idPatient = formConsultation.getIdPatient();
 
-        List<PatientSymptome> patientDentList = ExcelParser.getPatientSymptomeFromExcel(fileData, idPatient, dateConsultation);
-        patientSymptomeRepository.saveAll(patientDentList);
+        List<PatientSymptome> patientList = ExcelParser.getPatientSymptomeFromExcel(fileData, idPatient, dateConsultation);
+        patientSymptomeRepository.saveAll(patientList);
 
         // Diagnostique
         var p = patientRepository.findById(idPatient);

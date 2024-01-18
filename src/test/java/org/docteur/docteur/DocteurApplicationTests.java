@@ -49,6 +49,7 @@ class DocteurApplicationTests {
         System.out.println("\n==============\n"+ patientList +"\n==============\n");
     }
 
+
     @Test
     void testInsertPatientSymptomeFromExcelBefore() throws Exception {
         var patientList = ExcelParser.getPatientSymptomeFromExcel(excelFileLocation, 1L, dateConsultation);

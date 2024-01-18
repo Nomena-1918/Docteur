@@ -57,16 +57,17 @@ public class DocteurService {
 
                 int quantiteMedicament = (int) Math.ceil((double) patientSymptome.getIntensite() / medicamentSymptome.getEffet());
 
+                // Ajouter le médicament et sa quantité à la liste
+                medicamentQuantite.setMedicament(m);
+                if(medicamentQuantite.getQuantite() < quantiteMedicament)
+                    medicamentQuantite.setQuantite(quantiteMedicament);
+
                 // Vérifier si l'effet du médicament est suffisant pour traiter le symptôme
                 if (medicamentSymptome.getEffet() == 0 && patientSymptome.getIntensite() > 0) {
                     medicamentValide = false;
                     break;  // Passer au médicament suivant
                 }
 
-                // Ajouter le médicament et sa quantité à la liste
-                medicamentQuantite.setMedicament(m);
-                if(medicamentQuantite.getQuantite() < quantiteMedicament)
-                    medicamentQuantite.setQuantite(quantiteMedicament);
             }
 
             // Si le médicament est valide et moins cher, le sauvegarder
