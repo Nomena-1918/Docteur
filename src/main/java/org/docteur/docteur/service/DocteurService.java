@@ -1,5 +1,6 @@
 package org.docteur.docteur.service;
 
+import org.docteur.docteur.models.data.Diagnostique;
 import org.docteur.docteur.models.data.MedicamentQuantite;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,8 @@ import org.docteur.docteur.models.*;
 
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -76,6 +79,15 @@ public class DocteurService {
         return medicamentMoinsCher;
     }
 
+
+    public Diagnostique getDiagnostique(Patient patient, LocalDateTime localDateTime) {
+        Diagnostique diagnostique = new Diagnostique();
+        diagnostique.setPatient(patient);
+        diagnostique.setMaladieList(getMaladiesPatient(patient.getId(), localDateTime));
+        diagnostique.setMedicamentQuantiteList(Collections.singletonList(getMedicamentSoignant(patient.getId(), localDateTime)));
+        diagnostique.setDateEtat(localDateTime);
+        return diagnostique;
+    }
 
 
 }

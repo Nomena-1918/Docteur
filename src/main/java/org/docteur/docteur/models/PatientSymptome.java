@@ -35,5 +35,8 @@ public class PatientSymptome {
         this.intensite = intensite;
         this.dateConsultation = dateConsultation;
     }
+
+    public PatientSymptome() {
+    }
 }
 

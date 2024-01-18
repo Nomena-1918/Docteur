@@ -49,6 +49,8 @@ public class ExcelParser {
                         colonnes[j] = (int) nbr;
                     }
                 }
+                if (colonnes[0] < 0 || colonnes[1] < 0)
+                    throw new Exception("Valeur négative : "+colonnes[0] +" ou "+colonnes[1]);
                 patientSymptome = new PatientSymptome(idPatient, (long)(colonnes[0]), colonnes[1], dateConsultation);
                 patientSymptomeList.add(patientSymptome);
             }
