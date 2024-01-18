@@ -26,5 +26,14 @@ public class PatientSymptome {
 
     @Column(name = "date_consultation", insertable=false, updatable=false)
     private LocalDateTime dateConsultation;
+
+    public PatientSymptome(Long idPatient, Long idSymptome, Integer intensite, LocalDateTime dateConsultation) {
+        patient = new Patient();
+        patient.setId(idPatient);
+        symptome = new Symptome();
+        symptome.setId(idSymptome);
+        this.intensite = intensite;
+        this.dateConsultation = dateConsultation;
+    }
 }
 
