@@ -15,7 +15,6 @@ public class DocteurService {
     private final MaladieRepository maladieRepository;
     private final List<Medicament> medicamentList;
     private final PatientSymptomeRepository patientSymptomeRepository;
-
     private final MedicamentSymptomeRepository medicamentSymptomeRepository;
 
     @Autowired

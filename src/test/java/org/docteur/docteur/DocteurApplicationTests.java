@@ -61,8 +61,8 @@ class DocteurApplicationTests {
 
     @Test
     void testMaladiePatient() {
-        List<Maladie> maladieList = maladieRepository
-                .getMaladiesByIdPatientAndDate(1L, dateConsultation);
+        List<Maladie> maladieList = docteurService
+                .getMaladiesPatient(1L, dateConsultation);
         System.out.println(maladieList);
     }
 
