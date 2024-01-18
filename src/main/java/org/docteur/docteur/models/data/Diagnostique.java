@@ -29,4 +29,13 @@ public class Diagnostique {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return getDateEtat().format(formatter);
     }
+
+    public double getTotalPrix() {
+        double total = 0;
+        for (MedicamentQuantite m : medicamentQuantiteList) {
+            total += m.getPrixTotal();
+        }
+        return total;
+    }
+
 }

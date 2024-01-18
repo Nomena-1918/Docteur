@@ -21,37 +21,54 @@
             </div>
         </div>
     </div>
+
     <div class="offset-2 m-3">
-    <h2 class="h3 py-3">2) Liste des traitements : </h2>
+        <h2 class="h3 py-3">2) Liste des maladies : </h2>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID maladie</th>
+                    <th>Nom dent</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${diagnostique?.getMaladieList()}">
+                    <td th:text="${item?.getId()}"></td>
+                    <td th:text="${item.getNom()}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    <div class="offset-2 m-3">
+    <h2 class="h3 py-3">3) Liste des médicaments : </h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>ID dent</th>
-                <th>Numéro dent</th>
-                <th>Nom dent</th>
-                <th>Position</th>
-                <th>Etat</th>
-                <th>Type soin</th>
-                <th>Prix (Ar)</th>
+                <th>ID médicament</th>
+                <th>Nom médicament</th>
+                <th>Prix unitaire (Ar)</th>
+                <th>Quantité</th>
+                <th>Prix total (Ar)</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="item : ${diagnostique?.traitementDentList}">
-                <td th:text="${item?.patientDent?.dent?.id}"></td>
-                <td th:text="${item.patientDent.getDent().getCadran().id}+''+${item?.soinDent?.getTypeDent()?.id}"></td>
-                <td th:text="${item?.soinDent?.getTypeDent()?.getNom()}"></td>
-                <td th:text="${item?.patientDent?.dent?.getCadran().getNom()}"></td>
-                <td th:text="${item?.patientDent?.etat}"></td>
-                <td th:text="${item?.soinDent?.typeSoin?.nom}"></td>
-                <td th:text="${item?.soinDent?.prix}"></td>
+            <tr th:each="item : ${diagnostique?.getMedicamentQuantiteList()}">
+                <td th:text="${item?.getMedicament().getId()}"></td>
+                <td th:text="${item?.getMedicament().getNom()}"></td>
+                <td th:text="${item?.getMedicament().getPrixUnitaire()}"></td>
+                <td th:text="${item?.getQuantite()}"></td>
+                <td th:text="${item?.getPrixTotal()}"></td>
             </tr>
             </tbody>
             <tfoot>
             <tr></tr>
             <tr>
-                <td></td>
-                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
