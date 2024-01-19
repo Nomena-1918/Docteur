@@ -11,8 +11,10 @@ import org.docteur.docteur.models.PatientSymptome;
 import org.docteur.docteur.repositories.MedicamentRepository;
 import org.docteur.docteur.repositories.MedicamentSymptomeRepository;
 import org.docteur.docteur.repositories.PatientSymptomeRepository;
+import org.docteur.docteur.utils.ExcelParser;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
@@ -26,7 +28,9 @@ public class LinearOptimizationMedicamentTests {
     private final MedicamentRepository medicamentRepository;
     private final MedicamentSymptomeRepository medicamentSymptomeRepository;
     private final PatientSymptomeRepository patientSymptomeRepository;
-    private final LocalDateTime dateConsultation = LocalDateTime.parse("2024-01-17T06:08:32");
+    private final LocalDateTime dateConsultation = LocalDateTime.parse("2024-01-19T20:04:13.830091");
+    @Value("${custom.excel.file.location}")
+    private final String excelFileLocation = "src/main/resources/file/liste-patient-symptome.xlsx";
 
 
     @Autowired
@@ -34,6 +38,21 @@ public class LinearOptimizationMedicamentTests {
         this.medicamentRepository = medicamentRepository;
         this.medicamentSymptomeRepository = medicamentSymptomeRepository;
         this.patientSymptomeRepository = patientSymptomeRepository;
+    }
+
+
+    @Test
+    void testDeletePatientSymptomeFromExcelBefore() throws Exception {
+        var patientList = ExcelParser.getPatientSymptomeFromExcel(excelFileLocation, 1L, dateConsultation);
+        patientSymptomeRepository.deleteAll(patientList);
+        System.out.println("\n==============\n"+ patientList +"\n==============\n");
+    }
+
+    @Test
+    void testInsertPatientSymptomeFromExcelBefore() throws Exception {
+        var patientList = ExcelParser.getPatientSymptomeFromExcel(excelFileLocation, 1L, dateConsultation);
+        patientSymptomeRepository.saveAll(patientList);
+        System.out.println("\n==============\n"+ patientList +"\n==============\n");
     }
 
     @Test
@@ -89,6 +108,13 @@ public class LinearOptimizationMedicamentTests {
             System.out.println("Le problème n'a pas de solution optimale.");
         }
         //
-
     }
+
+    @Test
+    void testDeletePatientSymptomeFromExcelAfter() throws Exception {
+        var patientList = ExcelParser.getPatientSymptomeFromExcel(excelFileLocation, 1L, dateConsultation);
+        patientSymptomeRepository.deleteAll(patientList);
+        System.out.println("\n==============\n"+ patientList +"\n==============\n");
+    }
+
 }
