@@ -21,7 +21,6 @@ import java.util.List;
 
 @SpringBootTest
 class DocteurApplicationTests {
-    private final MaladieRepository maladieRepository;
     private final PatientSymptomeRepository patientSymptomeRepository;
     private final DocteurService docteurService;
     private final PatientRepository patientRepository;
@@ -31,8 +30,7 @@ class DocteurApplicationTests {
     private final LocalDateTime dateConsultation = LocalDateTime.parse("2024-01-17T06:08:32");
 
     @Autowired
-    DocteurApplicationTests(MaladieRepository maladieRepository, PatientSymptomeRepository patientSymptomeRepository, DocteurService docteurService, PatientRepository patientRepository) {
-        this.maladieRepository = maladieRepository;
+    DocteurApplicationTests(PatientSymptomeRepository patientSymptomeRepository, DocteurService docteurService, PatientRepository patientRepository) {
         this.patientSymptomeRepository = patientSymptomeRepository;
         this.docteurService = docteurService;
         this.patientRepository = patientRepository;
@@ -94,5 +92,4 @@ class DocteurApplicationTests {
         patientSymptomeRepository.deleteAll(patientList);
         System.out.println("\n==============\n"+ patientList +"\n==============\n");
     }
-
 }
