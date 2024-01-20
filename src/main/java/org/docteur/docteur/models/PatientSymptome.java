@@ -24,7 +24,7 @@ public class PatientSymptome {
     @Column(name = "intensite")
     private Integer intensite;
 
-    @Column(name = "date_consultation", insertable=false, updatable=false)
+    @Column(name = "date_consultation")
     private LocalDateTime dateConsultation;
 
     public PatientSymptome(Long idPatient, Long idSymptome, Integer intensite, LocalDateTime dateConsultation) {
@@ -33,7 +33,7 @@ public class PatientSymptome {
         symptome = new Symptome();
         symptome.setId(idSymptome);
         this.intensite = intensite;
-        this.dateConsultation = dateConsultation;
+        this.dateConsultation = dateConsultation != null ? dateConsultation : LocalDateTime.now();
     }
 
     public PatientSymptome() {

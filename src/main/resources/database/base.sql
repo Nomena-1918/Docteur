@@ -1,5 +1,5 @@
 create extension if not exists btree_gist;
-
+SET TIMEZONE = 'Indian/Antananarivo';
 create table patients(
     id serial primary key,
     nom varchar(100) not null
@@ -16,7 +16,7 @@ create table patient_symptomes(
     id_patient int references patients(id),
     id_symptome int references symptomes(id),
     intensite int check (intensite >= 0 and intensite <= 10),
-    date_consultation timestamp default now(),
+    date_consultation timestamp not null,
     unique (id_patient, id_symptome, intensite, date_consultation)
 );
 
@@ -49,12 +49,8 @@ create table medicament_symptomes(
 );
 
 
-SET TIMEZONE = 'Indian/Antananarivo';
-select now();
-
-
 -- Nombre de symptômes du malade par maladie
-create view v_patient_nombre_symptome_maladie as
+create or replace view v_patient_nombre_symptome_maladie as
 select ps.id_patient, mp.id_maladie, count(ps.id_symptome) as nbr_symptome, ps.date_consultation
 from patient_symptomes ps
          join maladie_parametres mp
@@ -63,14 +59,14 @@ from patient_symptomes ps
 group by mp.id_maladie, ps.date_consultation, ps.id_patient;
 
 -- Nombre de symptôme par maladie
-create view v_nombre_symptome_maladie as
+create or replace view v_nombre_symptome_maladie as
 select id_maladie, count(id_symptome) as nbr_symptome
 from maladie_parametres mp
 group by id_maladie
 order by id_maladie;
 
 -- Vue affichant les maladies d'un patient a une date donnée
-create view v_maladies_patient as
+create or replace view v_maladies_patient as
 select v1.id_patient, v1.id_maladie, m.nom, v1.date_consultation
 from v_patient_nombre_symptome_maladie v1
          join v_nombre_symptome_maladie v2 ON v1.id_maladie = v2.id_maladie

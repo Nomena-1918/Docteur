@@ -57,8 +57,8 @@ public class LinearOptimizationMedicamentTests {
     @Test
     void testInsertPatientSymptomeFromExcelBefore() throws Exception {
         var patientList = ExcelParser.getPatientSymptomeFromExcel(excelFileLocation, 1L, dateConsultation);
-        patientSymptomeRepository.saveAll(patientList);
-        System.out.println("\n==============\n"+ patientList +"\n==============\n");
+        var list = patientSymptomeRepository.saveAll(patientList);
+        System.out.println("\n==============\n"+ list +"\n==============\n");
     }
 
 

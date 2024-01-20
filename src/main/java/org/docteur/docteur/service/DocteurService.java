@@ -135,7 +135,7 @@ public class DocteurService {
         if (resultStatus == MPSolver.ResultStatus.OPTIMAL) {
             for (Medicament medicament : medicamentList) {
                 double quantity = quantitesMedicaments.get(medicament.getId()).solutionValue();
-                if (quantity > 0) {
+                if (quantity > 0.0) {
                     results.add(new MedicamentQuantite(medicament, (int) quantity));
                 }
             }

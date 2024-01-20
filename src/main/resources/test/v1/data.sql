@@ -40,21 +40,17 @@ insert into maladie_parametres(id_maladie, id_symptome, plage_intensite) values
 insert into patients(nom) values
 ('Patient 1');
 
-
+/*
 -- Insertion des symptômes ddu patient
 insert into patient_symptomes(id_patient, id_symptome, intensite, date_consultation) values
 (1, 1, 5, '2024-01-17 06:08:32'),
 (1, 2, 7, '2024-01-17 06:08:32'),
 (1, 3, 8, '2024-01-17 06:08:32'),
 (1, 4, 7, '2024-01-17 06:08:32'),
+(1, 5, 0, '2024-01-17 06:08:32'),
+(1, 6, 0, '2024-01-17 06:08:32'),
 (1, 7, 9, '2024-01-17 06:08:32');
-
-
-/*
-select ps.id, id_patient, s.id, coalesce(intensite, 0) as intensite, date_consultation from symptomes s
-left join  patient_symptomes ps on ps.id_symptome = s.id;
 */
-
 
 -- Insertion des paramètres liés aux médicaments
 insert into medicament_symptomes(id_medicament, id_symptome, effet) values
