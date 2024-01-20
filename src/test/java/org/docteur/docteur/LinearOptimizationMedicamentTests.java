@@ -141,4 +141,9 @@ public class LinearOptimizationMedicamentTests {
         System.out.println("\n==============\n"+ patientList +"\n==============\n");
     }
 
+    @Test
+    void vita() {
+        System.out.println("C'est bon lesy eh !!!");
+    }
+
 }
