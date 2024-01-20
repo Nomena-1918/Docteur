@@ -28,7 +28,7 @@ public class LinearOptimizationMedicamentTests {
     private final MedicamentRepository medicamentRepository;
     private final MedicamentSymptomeRepository medicamentSymptomeRepository;
     private final PatientSymptomeRepository patientSymptomeRepository;
-    private final LocalDateTime dateConsultation = LocalDateTime.parse("2024-01-19T20:04:13.830091");
+    private final LocalDateTime dateConsultation = LocalDateTime.parse("2024-01-17T06:08:32");
     @Value("${custom.excel.file.location}")
     private final String excelFileLocation = "src/main/resources/file/liste-patient-symptome.xlsx";
 

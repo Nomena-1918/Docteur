@@ -51,44 +51,11 @@ insert into patient_symptomes(id_patient, id_symptome, intensite, date_consultat
 (1, 6, 0, '2024-01-17 06:08:32'),
 (1, 7, 9, '2024-01-17 06:08:32');
 
-SET TIMEZONE = 'Indian/Antananarivo';
-select now();
 
--- Nombre de symptômes du malade par maladie
-create view v_patient_nombre_symptome_maladie as
-select ps.id_patient, mp.id_maladie, count(ps.id_symptome) as nbr_symptome, ps.date_consultation
-from patient_symptomes ps
-    join maladie_parametres mp
-        on ps.id_symptome = mp.id_symptome
-               and ps.intensite <@ mp.plage_intensite
-group by mp.id_maladie, ps.date_consultation, ps.id_patient;
-
--- Nombre de symptôme par maladie
-create view v_nombre_symptome_maladie as
-select id_maladie, count(id_symptome) as nbr_symptome
-from maladie_parametres mp
-group by id_maladie
-order by id_maladie;
-
--- Vue affichant les maladies d'un patient a une date donnée
-create view v_maladies_patient as
-select v1.id_patient, v1.id_maladie, m.nom, v1.date_consultation
-from v_patient_nombre_symptome_maladie v1
-         join v_nombre_symptome_maladie v2 ON v1.id_maladie = v2.id_maladie
-         join maladies m ON v1.id_maladie = m.id
-where v1.nbr_symptome = v2.nbr_symptome;
-
--- Test
-select id_maladie, nom
-from v_maladies_patient
-where date_consultation = '2024-01-17 06:08:32'
-and id_patient = 1;
-
-select *
-from patient_symptomes
-where date_consultation = '2024-01-17 06:08:32'
-  and id_patient = 1;
-
+/*
+select ps.id, id_patient, s.id, coalesce(intensite, 0) as intensite, date_consultation from symptomes s
+left join  patient_symptomes ps on ps.id_symptome = s.id;
+*/
 
 
 -- Insertion des paramètres liés aux médicaments
