@@ -55,6 +55,9 @@ public class LinearOptimizationMedicamentTests {
         System.out.println("\n==============\n"+ patientList +"\n==============\n");
     }
 
+
+
+
     @Test
     void primaryTest() {
         Loader.loadNativeLibraries();
@@ -102,7 +105,8 @@ public class LinearOptimizationMedicamentTests {
         if (resultStatus == MPSolver.ResultStatus.OPTIMAL) {
             System.out.println("Solution trouvée !");
             for (Medicament medicament : medicamentList) {
-                System.out.println("Medicament: " + medicament.getNom() + ", Quantité: " + quantitesMedicaments.get(medicament.getId()).solutionValue());
+                if (quantitesMedicaments.get(medicament.getId()).solutionValue() > 0)
+                    System.out.println("Medicament: " + medicament.getNom() + ", Quantité: " + quantitesMedicaments.get(medicament.getId()).solutionValue());
             }
         } else {
             System.out.println("Le problème n'a pas de solution optimale.");
