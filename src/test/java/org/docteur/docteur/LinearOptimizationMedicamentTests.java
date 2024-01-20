@@ -7,10 +7,14 @@ import com.google.ortools.linearsolver.MPSolver;
 import com.google.ortools.linearsolver.MPVariable;
 import org.docteur.docteur.models.Medicament;
 import org.docteur.docteur.models.MedicamentSymptome;
+import org.docteur.docteur.models.Patient;
 import org.docteur.docteur.models.PatientSymptome;
+import org.docteur.docteur.models.data.Diagnostique;
+import org.docteur.docteur.models.data.MedicamentQuantite;
 import org.docteur.docteur.repositories.MedicamentRepository;
 import org.docteur.docteur.repositories.MedicamentSymptomeRepository;
 import org.docteur.docteur.repositories.PatientSymptomeRepository;
+import org.docteur.docteur.service.DocteurService;
 import org.docteur.docteur.utils.ExcelParser;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,16 +32,18 @@ public class LinearOptimizationMedicamentTests {
     private final MedicamentRepository medicamentRepository;
     private final MedicamentSymptomeRepository medicamentSymptomeRepository;
     private final PatientSymptomeRepository patientSymptomeRepository;
+    private final DocteurService docteurService;
     private final LocalDateTime dateConsultation = LocalDateTime.parse("2024-01-17T06:08:32");
     @Value("${custom.excel.file.location}")
     private final String excelFileLocation = "src/main/resources/file/liste-patient-symptome.xlsx";
 
 
     @Autowired
-    public LinearOptimizationMedicamentTests(MedicamentRepository medicamentRepository, MedicamentSymptomeRepository medicamentSymptomeRepository, PatientSymptomeRepository patientSymptomeRepository) {
+    public LinearOptimizationMedicamentTests(MedicamentRepository medicamentRepository, MedicamentSymptomeRepository medicamentSymptomeRepository, PatientSymptomeRepository patientSymptomeRepository, DocteurService docteurService) {
         this.medicamentRepository = medicamentRepository;
         this.medicamentSymptomeRepository = medicamentSymptomeRepository;
         this.patientSymptomeRepository = patientSymptomeRepository;
+        this.docteurService = docteurService;
     }
 
 
@@ -112,6 +118,20 @@ public class LinearOptimizationMedicamentTests {
             System.out.println("Le problème n'a pas de solution optimale.");
         }
         //
+    }
+
+    @Test
+    void secondTest() {
+        List<MedicamentQuantite> medocs = docteurService.getListMedicamentSoignant(1L, dateConsultation);
+        System.out.println("\n===============\n"+medocs+"\n===============\n");
+    }
+
+    @Test
+    void thirdTest() {
+        Patient p = new Patient();
+        p.setId(1L);
+        Diagnostique diagnostique = docteurService.getDiagnostiqueSimplexe(p, dateConsultation);
+        System.out.println("\n===============\n"+diagnostique+"\n===============\n");
     }
 
     @Test

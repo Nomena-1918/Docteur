@@ -15,4 +15,8 @@ public class MedicamentQuantite {
     public MedicamentQuantite() {
     }
 
+    public MedicamentQuantite(Medicament medicament, int quantite) {
+        this.medicament = medicament;
+        this.quantite = quantite;
+    }
 }

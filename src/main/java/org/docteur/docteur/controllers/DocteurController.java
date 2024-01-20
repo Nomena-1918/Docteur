@@ -65,7 +65,7 @@ public class DocteurController {
         var p = patientRepository.findById(idPatient);
         Diagnostique diagnostique = null;
         if (p.isPresent())
-            diagnostique = docteurService.getDiagnostique(p.get(), dateConsultation);
+            diagnostique = docteurService.getDiagnostiqueSimplexe(p.get(), dateConsultation);
 
         model.addAttribute("diagnostique", diagnostique);
 
