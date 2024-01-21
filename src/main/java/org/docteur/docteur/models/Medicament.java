@@ -27,4 +27,14 @@ public class Medicament {
 
     @Transient
     private List<MedicamentSymptome> medicamentSymptomes;
+
+    public Medicament() {
+    }
+
+    public Medicament(int id, String nom, int prixUnitaire, List<MedicamentSymptome> medicamentSymptomes) {
+        this.id = (long) id;
+        this.nom = nom;
+        this.prixUnitaire = (double) prixUnitaire;
+        this.medicamentSymptomes = medicamentSymptomes;
+    }
 }

@@ -75,7 +75,7 @@ insert into medicament_symptomes(id_medicament, id_symptome, effet) values
 (3, 1, 9),
 (3, 2, 7),
 (3, 3, 6),
-(3, 4, 9),-- effets Maux de ventre = 0
+(3, 4, 9),
 (3, 5, 0),
 (3, 6, 1),
 (3, 7, 6),
@@ -91,9 +91,9 @@ insert into medicament_symptomes(id_medicament, id_symptome, effet) values
 
 
 (5, 1, 2),
-(5, 2, 4),
+(5, 2,-9),
 (5, 3, 3),
-(5, 4, 2),-- effets Maux de ventre = 0
+(5, 4, 2),
 (5, 5, 0),
 (5, 6, 1),
 (5, 7,10),
@@ -106,3 +106,9 @@ insert into medicament_symptomes(id_medicament, id_symptome, effet) values
 (6, 5, 4),
 (6, 6, 9),
 (6, 7, 2);
+
+create or replace view  v_medicament_symptome_complet as
+select ms.id, ms.id_medicament, m.nom as nom_medicament, ms.id_symptome, s.nom as nom_symptome, ms.effet
+    from medicament_symptomes ms
+join medicaments m on ms.id_medicament = m.id
+join symptomes s on ms.id_symptome = s.id;

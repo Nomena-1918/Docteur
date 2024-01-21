@@ -38,5 +38,10 @@ public class PatientSymptome {
 
     public PatientSymptome() {
     }
+
+    public PatientSymptome(Symptome symptome, Integer intensite) {
+        this.symptome = symptome;
+        this.intensite = intensite;
+    }
 }
 

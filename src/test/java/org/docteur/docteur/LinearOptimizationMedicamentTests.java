@@ -76,9 +76,7 @@ public class LinearOptimizationMedicamentTests {
         List<Medicament> medicamentList = medicamentRepository.findAll();
         for (Medicament m : medicamentList) {
             m.setMedicamentSymptomes(medicamentSymptomeRepository.findByIdMedicament(m.getId()));
-        }
-        for (Medicament medicament : medicamentList) {
-            quantitesMedicaments.put(medicament.getId(), solver.makeIntVar(0.0, Double.POSITIVE_INFINITY, "Quantite_" + medicament.getNom()));
+            quantitesMedicaments.put(m.getId(), solver.makeIntVar(0.0, Double.POSITIVE_INFINITY, "Quantite_" +m.getNom()));
         }
         System.out.println("Number of variables = " + solver.numVariables());
         //

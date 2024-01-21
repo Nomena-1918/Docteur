@@ -31,4 +31,11 @@ public class Symptome {
         return Objects.hash(id);
     }
 
+    public Symptome() {
+    }
+
+    public Symptome(int id, String nom) {
+        this.id = (long) id;
+        this.nom = nom;
+    }
 }

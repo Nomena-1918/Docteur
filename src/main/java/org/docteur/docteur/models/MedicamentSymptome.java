@@ -22,4 +22,14 @@ public class MedicamentSymptome {
 
     @Column(name = "effet")
     private Integer effet;
+
+    public MedicamentSymptome(Symptome mauxDeVentre, int i) {
+        this.symptome = mauxDeVentre;
+        this.effet = i;
+    }
+
+    public MedicamentSymptome() {
+
+    }
+
 }
