@@ -25,7 +25,7 @@ public class LinearOptimizationMedicamentTests {
         // Définir les variables de décision (binaire)
         MPVariable[] medicamentVars = new MPVariable[medicamentList.size()];
         for (int i = 0; i < medicamentList.size(); i++) {
-            medicamentVars[i] = solver.makeIntVar(0, 1, "Medicament_" + (i + 1));
+            medicamentVars[i] = solver.makeIntVar(0, Double.POSITIVE_INFINITY, "Medicament_" + (i + 1));
         }
     
         // Définir la fonction objectif (minimiser le coût total)
