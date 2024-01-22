@@ -33,6 +33,9 @@
                 </tr>
                 </thead>
                 <tbody>
+                <tr th:if="${diagnostique?.getMaladieList().isEmpty()}">
+                    <td>Aucune maladie trouvée</td>
+                </tr>
                 <tr th:each="item : ${diagnostique?.getMaladieList()}">
                     <td th:text="${item?.getId()}"></td>
                     <td th:text="${item?.getNom()}"></td>
