@@ -89,6 +89,7 @@ from medicament_symptomes ms
 join medicaments m on ms.id_medicament = m.id
 join symptomes s on ms.id_symptome = s.id;
 
+/*
 --------------------------
 Kibo - 8
 Caca - 4
@@ -96,3 +97,4 @@ Andoha - 6
 Temperature - 5
 Fatigue - 3
 Lelo - 7
+*/
